@@ -25,3 +25,7 @@ Build emits a chunk-size warning for the combined UI/Three.js bundle (about 1 MB
 CI is configured in `.github/workflows/verify.yml`; local validation does not claim a completed GitHub Actions run or a deployment on the user's server.
 
 The saved development startup command (`pnpm dev:selfhost`) was also exercised: the browser entered reception, selected a student card, loaded a restored path, entered class and executed `cat auth.log` without application errors.
+
+A separate clean clone of source commit `17b7696` was installed with the frozen lockfile and integrity verification, then passed TypeScript, motion/campus/learning tests, production build and HTTP server checks. No existing `node_modules` or generated build directory was copied into that checkout.
+
+The final archive was extracted into a separate directory. Every file matched its SHA-256 manifest; its `node run.mjs` launcher served healthy HTML, JS, CSS, favicon and offline references. Final build files were byte-identical to the clean-clone build.

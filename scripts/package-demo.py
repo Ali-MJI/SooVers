@@ -10,7 +10,7 @@ files={}
 for path in sorted(build.rglob('*')):
  if path.is_file():files['SooVers_Demo/site/'+path.relative_to(build).as_posix()]=path.read_bytes()
 files['SooVers_Demo/runtime/serve.mjs']=(root/'scripts/serve.mjs').read_bytes()
-files['SooVers_Demo/run.mjs']=b"import {spawn} from 'node:child_process';\nimport {fileURLToPath} from 'node:url';\nconst p=spawn(process.execPath,[fileURLToPath(new URL('./runtime/serve.mjs',import.meta.url)),'--root',fileURLToPath(new URL('./site',import.meta.url))],{stdio:'inherit'});p.on('exit',code=>process.exit(code||0));\n"
+files['SooVers_Demo/run.mjs']=b"import {fileURLToPath} from 'node:url';\nprocess.argv.push('--root',fileURLToPath(new URL('./site',import.meta.url)));\nawait import('./runtime/serve.mjs');\n"
 files['SooVers_Demo/START_WINDOWS.bat']=b'@echo off\r\ncd /d "%~dp0"\r\nnode run.mjs\r\npause\r\n'
 files['SooVers_Demo/READ_ME_FA.md']=(root/'docs/LOCAL_DEMO_FA.md').read_bytes()
 source_roots={'app','components','hooks','lib','local','public','scripts','docs','deploy','vendor','.github'}
