@@ -10,3 +10,5 @@ dist/
 artifacts/
 test-results/
 *.log
+
+.sites-runtime/

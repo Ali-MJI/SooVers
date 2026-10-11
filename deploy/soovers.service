@@ -1,0 +1,18 @@
+[Unit]
+Description=SooVers demo static server
+After=network.target
+[Service]
+Type=simple
+User=soovers
+Group=soovers
+WorkingDirectory=/opt/soovers/current
+ExecStart=/usr/bin/node scripts/serve.mjs
+Environment=HOST=127.0.0.1
+Environment=PORT=8080
+Restart=on-failure
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target
